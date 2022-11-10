@@ -12,15 +12,15 @@
         </ion-toolbar>
       </ion-header>
       <div id="container">
-          <ion-item>
-              <ion-input type="text" placeholder="Prenom"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-input type="text" placeholder="Nom"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-input type="text" placeholder="Mot de passe"></ion-input>
-          </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Prenom"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Nom"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Mot de passe"></ion-input>
+        </ion-item>
         <ion-button>Connexion</ion-button>
       </div>
       <ExploreContainer name="Tab 1 page" />
@@ -37,6 +37,6 @@ export default  defineComponent({
   name: 'Tab1Page',
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
 
-  });
+});
 
 </script>

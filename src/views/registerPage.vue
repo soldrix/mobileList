@@ -8,7 +8,7 @@
     <ion-content :fullscreen="true">
       <div id="container">
         <ion-avatar class="avatar ion-padding-top">
-          <img src="https://www.kindpng.com/picc/m/33-338711_circle-user-icon-blue-hd-png-download.png">
+          <ion-img src="https://www.kindpng.com/picc/m/33-338711_circle-user-icon-blue-hd-png-download.png"></ion-img>
         </ion-avatar>
         <ion-item>
           <ion-label position="floating">Prenom</ion-label>
@@ -35,7 +35,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,IonLabel,IonItem,IonInput,IonButton,IonAvatar } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,IonLabel,IonItem,IonInput,IonButton,IonAvatar,IonImg } from '@ionic/vue';
 import axios from "axios";
 export default  defineComponent({
   name: 'Tab1Page',
@@ -49,7 +49,8 @@ export default  defineComponent({
     IonItem,
     IonInput,
     IonButton,
-    IonAvatar
+    IonAvatar,
+    IonImg
   },data(){
     return{
       txtPrenom:"",
@@ -83,10 +84,10 @@ export default  defineComponent({
                           inputval[i].value = "";
                           inputval[i].parentElement.classList.remove('active');
                         }
-                        window.location.href = '/home';
+                        window.location.href = '/login';
 
                     })
-                    .catch(function (error) {
+                    .catch( (error) => {
                       alert(error);
                     });
               }else {
@@ -98,8 +99,9 @@ export default  defineComponent({
                 }
               }
 
-            })
-
+            }).catch( (e) =>{
+              alert(e)
+        })
       }
       else{
         if(valNom === ''){
@@ -136,12 +138,6 @@ export default  defineComponent({
 
         }
       }
-
-
-
-
-
-
     }
   }
 

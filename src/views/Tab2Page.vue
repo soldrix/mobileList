@@ -33,7 +33,7 @@ export default defineComponent({
      txtname:""
    }
  },methods:{
-        async presentToast(name) {
+        async presentToast(name) { // popup list ajouté
           const toast = await toastController.create({
             message: 'La liste '+name+' a été ajouté.',
             duration: 1500,
@@ -42,7 +42,7 @@ export default defineComponent({
 
           await toast.present();
         },
-        addlist(){
+        addlist(){ //ajout list in db
           let namelist = (this.txtname !== '') ? this.txtname : 'Liste' ;
           let id_user = window.location.search.split('?')[1];
           axios.post('http://localhost:8000/addList',{"name":namelist,"id_user":id_user})

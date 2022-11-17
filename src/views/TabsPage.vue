@@ -32,7 +32,7 @@ export default defineComponent({
       triangle,
     }
   },methods:{
-    redirect(where){
+    redirect(where){//redirect page with id_user
       if (where ===  1){
         window.location.href='/home'+window.location.search;
       }else{

@@ -62,7 +62,7 @@ export default  defineComponent({
   setup(){
     let id_user =(window.location.search.split('?')[1] !== undefined) ? window.location.search.split('?')[1]  : null;
     if(id_user !== null && isNaN(atob(id_user)) === false){
-      async function presentToast(msg) {
+      async function presentToast(msg) {//draw popup with message
         let toast = await toastController.create({
           message: msg,
           duration: 1500,
@@ -70,7 +70,7 @@ export default  defineComponent({
         });
         await toast.present();
       }
-      function deleteList(id){
+      function deleteList(id){ //delete list with id
         axios.post('http://localhost:8000/delList',{'id': id,"id_user": id_user})
             .then((response)=>{
               if(response.data === false){
@@ -81,7 +81,7 @@ export default  defineComponent({
               }
             })
       }
-      function deleteProduct(id){
+      function deleteProduct(id){ //delete product with id
         axios.post('http://localhost:8000/delProduct',{'id': id,"id_user": id_user})
             .then((response)=>{
               if(response.data === false){
@@ -93,7 +93,7 @@ export default  defineComponent({
             })
       }
 
-      async function presentActionSheet(id,name,type){
+      async function presentActionSheet(id,name,type){ // popup verif suppresion cancel or supp
         let actionSheet = await actionSheetController.create({
           header: name,
           buttons: [
@@ -119,7 +119,7 @@ export default  defineComponent({
         });
         await actionSheet.present();
       }
-      function addProduct(id) {
+      function addProduct(id) {//ajout product with list id
         let blockProduct = document.getElementById('list' + id);
         let inputList = (document.getElementById('input' + id).value !== '') ? document.getElementById('input' + id).value : 'produit';
         axios.post('http://localhost:8000/addProduct', {"id_user": id_user, "id_list": id, "name": inputList})
@@ -133,7 +133,7 @@ export default  defineComponent({
                 <ion-button class="delProduct" id="delP`+datas.data.id+`">
                     <ion-img src="assets/img/trash.png" class="imgDelete"></ion-img>
                 </ion-button>
-              </ion-item>`);
+              </ion-item>`);//darw product in list
               document.getElementById('checkbox'+datas.data.id).addEventListener('click',function () {
                 updateProduct(datas.data.id)
               })
@@ -143,7 +143,7 @@ export default  defineComponent({
             })
       }
 
-      function updateProduct(id){
+      function updateProduct(id){//update product status with id
         let valCheckbox = (document.getElementById('checkbox'+id).checked === false) ? 'true' : 'false';
         axios.post('http://localhost:8000/updateProduct', {"id_user": id_user, "id": id, "status": valCheckbox})
             .then((response)=>{
@@ -156,7 +156,7 @@ export default  defineComponent({
             })
       }
 
-      axios.post('http://localhost:8000/getlist',{'id_user':id_user})
+      axios.post('http://localhost:8000/getlist',{'id_user':id_user})//load all list
           .then((datas)=> {
             if(datas.data !== false && datas.data !== ''){
               if(datas.data !== null){
@@ -186,11 +186,11 @@ export default  defineComponent({
                           </ion-grid>
                         </div>
                       </ion-accordion>
-                  `);
+                  `);//draw list
                   document.getElementById('delList'+response.id).addEventListener('click',function () {
                     presentActionSheet(response.id,'Supprimer la liste: '+response.name, 'list')
                   })
-                  axios.post('http://localhost:8000/getProduct',{'id':response.id,'id_user':id_user})
+                  axios.post('http://localhost:8000/getProduct',{'id':response.id,'id_user':id_user})//get all product with list id
                       .then((datas)=>{
                         if(datas.data === false){
                           goLogin;
@@ -205,7 +205,7 @@ export default  defineComponent({
                                   <ion-img src="assets/img/trash.png" ></ion-img>
                               </ion-button>
                             </ion-item>
-                          `);
+                          `);//draw product in list
                           document.getElementById('checkbox'+item.id).addEventListener('click',function () {
                             updateProduct(item.id)
                           })
@@ -225,7 +225,7 @@ export default  defineComponent({
                 console.log('une erreur est survenu')
               }
             }else{
-              goLogin;
+              goLogin;//return login
             }
           })
           .catch((e)=>{

@@ -91,7 +91,7 @@ export default  defineComponent({
                       alert(error);
                     });
               }else {
-                if(email.classList.contains('active') !== true) {
+                if(email.classList.contains('active') !== true) {//draw error email
                   email.classList = email.classList + ' active';
                   email.insertAdjacentHTML('afterend', `
                     <p class="textRed">L'adresse mail existe déjà ou est incorrect.</p>
@@ -103,7 +103,7 @@ export default  defineComponent({
               alert(e)
         })
       }
-      else{
+      else{//draw error
         if(valNom === ''){
           if (nom.classList.contains('active') !== true){
             nom.classList = nom.classList+' active';

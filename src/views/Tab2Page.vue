@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-start ion-padding-start">Ajouter une liste</ion-title>
+        <ion-title class="ion-text-start ion-padding-start ion-padding-end">Ajouter une liste <a @click="logOff" class="ion-float-end btnLogOff">Déconnexion</a></ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -33,6 +33,14 @@ export default defineComponent({
      txtname:""
    }
  },methods:{
+
+    logOff(){
+      let id_user = window.location.search.split('?')[1];
+      axios.post('http://localhost:8000/logOff',{"id_user":id_user})
+          .then(()=>{
+        window.location.href = '/login';
+      })
+    },
         async presentToast(name) { // popup list ajouté
           const toast = await toastController.create({
             message: 'La liste '+name+' a été ajouté.',
@@ -66,3 +74,9 @@ export default defineComponent({
 }
 );
 </script>
+<style>
+.btnLogOff{
+  color: white !important;
+  text-decoration: none;
+}
+</style>

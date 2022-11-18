@@ -27,7 +27,7 @@
           <ion-input type="password" v-model="txtPassword" placeholder="Mot de passe" class="inputPassword"></ion-input>
         </ion-item>
         <ion-button shape="round" expand="full" class="btnInscription ion-margin-bottom" @click="saveUser">S'inscrire</ion-button>
-        <ion-button shape="round" expand="full" color="medium" fill="outline" href="/home">Connexion</ion-button>
+        <ion-button shape="round" expand="full" color="medium" fill="outline" href="/login">Connexion</ion-button>
       </div>
     </ion-content>
   </ion-page>
